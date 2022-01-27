@@ -29,7 +29,7 @@
                 </div>
             @endif
 
-            <form action="/store" role="form" method="post" class="form" enctype="multipart/form-data">
+            <form action="store" role="form" method="post" class="form" enctype="multipart/form-data">
                 @csrf
 
                 <div class="p-3">
