@@ -24,19 +24,18 @@ Route::get('/', function () {
 
 
 Route::post('check', [UserController::class, 'check'])->name('check');
-Route::post('store', [UserController::class, 'store'])->name('store');
-Route::post('/upload-content',[SmsController::class,'uploadContent'])->name('import.content');
+Route::post('store', [UserController::class, 'store'])->name('store'); 
 
  
 Route::group(['middleware' => ['logged']], function () {
-    Route::get('/index',  [UserController::class, 'index']); 
-    Route::get('/logout', [UserController::class, 'logout']);
+    Route::get('index',  [UserController::class, 'index']); 
+    Route::get('logout', [UserController::class, 'logout']);
  
-    Route::get('/fiche_pdf/{invoice}', [InvoiceController::class, 'pdf']);
-    Route::get('/getFiles', [InvoiceController::class, 'create']);
-    Route::get('/export', [InvoiceController::class, 'export']);
+    Route::get('fiche_pdf/{invoice}', [InvoiceController::class, 'pdf']);
+    Route::get('getFiles', [InvoiceController::class, 'create']);
+    Route::get('export', [InvoiceController::class, 'export']);
 
-    Route::post('/store', [InvoiceController::class, 'store']);
+    Route::post('store', [InvoiceController::class, 'store']);
 
     
 

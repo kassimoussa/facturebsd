@@ -3,7 +3,7 @@
     <div class="row mt-3">
         <div class="d-flex justify-content-between mb-3 ">
             <h3 class="fw-bold">Invoice uploading</h3>
-            <a href="/index" class="btn   btn-primary  fw-bold"> <i class="fas fa-arrow-left"></i> RETOURNER</a>
+            <a href="index" class="btn   btn-primary  fw-bold"> <i class="fas fa-arrow-left"></i> RETOURNER</a>
         </div>
         <div class="row">
             @if ($errors->any())
