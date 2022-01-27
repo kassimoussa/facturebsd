@@ -35,7 +35,7 @@ Route::group(['middleware' => ['logged']], function () {
     Route::get('getFiles', [InvoiceController::class, 'create']);
     Route::get('export', [InvoiceController::class, 'export']);
 
-    Route::post('store', [InvoiceController::class, 'store']);
+    Route::post('invoicestore', [InvoiceController::class, 'store']);
 
     
 
