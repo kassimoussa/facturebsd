@@ -117,7 +117,7 @@ $user = User::where('id', session('id'))->first();
                             <li>
                                 <hr class="dropdown-divider">
                             </li> --}}
-                            <li><a class="dropdown-item" href="/logout">Déconnexion</a></li>
+                            <li><a class="dropdown-item" href="{{ url('logout') }}">Déconnexion</a></li>
                         </ul>
                     </div>
                 </div>
