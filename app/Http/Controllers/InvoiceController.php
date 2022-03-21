@@ -49,15 +49,16 @@ class InvoiceController extends Controller
                 {
                     return back()->with('fail', 'Le fichier '.$name .' existe déja dans la base des données');
                 }else{
-                    $path = $file->storeAs('public/files', $name);
                     $insert[$key]['name'] = $name;
+                   // $path = $file->storeAs('public/files', $name);
+                    $path = "public/files/". $name;
                     $insert[$key]['path'] = $path;
                 }
                 
             }
          }
          Impaye::insert($insert);
-        return back()->with('status', 'Multiple File has been uploaded into db and storage directory');
+        return back()->with('success', 'Multiple File has been uploaded into db and storage directory');
     }
 
     /**
