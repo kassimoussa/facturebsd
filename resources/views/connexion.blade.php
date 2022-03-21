@@ -24,7 +24,7 @@
 				<form class="login100-form validate-form" action="{{ route('check') }}" method="POST">
                     @csrf
 					<span class="login100-form-title p-b-33">
-						Facture BSD
+						Facture RBS
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
