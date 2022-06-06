@@ -9,9 +9,13 @@
     </div>
 
     <div>
+        <form method="post" action="{{url('deleteInvoices')}}"> 
+            @csrf 
+            <input class="btn btn-danger" type="submit" name="submit" value="Delete Invoices"/>
         <table class="table tablesorter table-sm table-hover" id="">
             <thead class=" text-primary text-center">
-                <th scope="col">#</th>
+                <th scope="col"><input type="checkbox" id="checkAll"> #</th>
+                <th scope="col">Id</th>
                 <th scope="col">File Name</th> 
                 <th scope="col">Action</th>
             </thead>
@@ -23,6 +27,7 @@
 
                     @foreach ($invoices as $key => $invoice) 
                         <tr  >
+                            <td><input type="checkbox" name="id[]" value="{{ $invoice->id }}"></td>
                             <td>{{ $invoice->id }}</td>
                             <td>{{ $invoice->name }}</td> 
                             <td class="td-actions ">
@@ -30,6 +35,7 @@
                                     data-bs-placement="bottom" title="Télécharger la facture ">
                                     <i class="fas fa-download"></i>
                                 </a> 
+                                
                             </td>
                         </tr>
                         
@@ -44,6 +50,7 @@
                 @endif
             </tbody>
         </table>
+        </form>
         <div class="d-flex justify-content-center">
             {{ $invoices->links() }}
         </div>
@@ -51,3 +58,9 @@
 
     </div>
 </div>
+
+<script language="javascript">
+    $("#checkAll").click(function () {
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+</script>

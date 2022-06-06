@@ -124,5 +124,23 @@ class InvoiceController extends Controller
         }
         return view('1.list', compact('files'));
     }
+
+    public function deleteInvoices(Request $request)
+	{
+		$id = $request->id;
+		foreach ($id as $imp) 
+		{
+            $invoice = Impaye::where('id', $imp)->first();
+            $path = 'storage/files/'.$invoice->name;
+        if(File::exists($path)){
+            File::delete($path); 
+           // return back()->with('success', 'document supprimé');
+        }else{
+           // return back()->with('fail','File does not exists.');
+        }
+			Impaye::where('id', $imp)->delete();
+		}
+		return back()->with('success', 'Files deleted');
+	}
  
 }

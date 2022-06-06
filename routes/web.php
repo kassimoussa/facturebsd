@@ -36,6 +36,7 @@ Route::group(['middleware' => ['logged']], function () {
     Route::get('export', [InvoiceController::class, 'export']);
 
     Route::post('invoicestore', [InvoiceController::class, 'store']);
+    Route::post('deleteInvoices', [InvoiceController::class, 'deleteInvoices']);
 
     
 
