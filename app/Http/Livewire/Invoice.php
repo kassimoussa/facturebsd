@@ -19,7 +19,7 @@ class Invoice extends Component
         // sleep(1);
         $searche =  $this->searche ;
 
-        $invoices =  Impaye::where('name', 'Like', '%' . $searche . '%') ->orderBy('id', 'asc')->paginate(50);
+        $invoices =  Impaye::where('name', 'Like', '%' . $searche . '%') ->orderBy('id', 'asc')->paginate(100);
         //$this->invoices =  Impaye::all();
         return view('livewire.invoice', ['invoices' => $invoices]);
     }
