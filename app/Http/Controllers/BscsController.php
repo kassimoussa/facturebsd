@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bscs;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\File;
 
@@ -36,14 +36,16 @@ class BscsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  
-         
-        if($request->hasfile('files'))
-         {
-            foreach($request->file('files') as $key => $file)
-            {
+    {
+
+        if ($request->hasfile('files')) {
+            foreach ($request->file('files') as $key => $file) {
                 $name = $file->getClientOriginalName();
-                if(Bscs::where('name', $name)->exists())
+                //$insert[$key]['name'] = $name;
+                $path = $file->storeAs('public/bscs', $name);
+                //$path = "storage/bscs/" . $name;
+                //$insert[$key]['path'] = "storage/bscs/" . $name;
+                /* if(Bscs::where('name', $name)->exists())
                 {
                     return back()->with('fail', 'Le fichier '.$name .' existe déja dans la base des données');
                 }else{
@@ -51,31 +53,29 @@ class BscsController extends Controller
                     //$path = $file->storeAs('public/bscs', $name);
                     $path = "storage/bscs/". $name;
                     $insert[$key]['path'] = "storage/bscs/". $name;
-                }
-                
+                } */
             }
-         }
-         Bscs::insert($insert);
+        }
+        //Bscs::insert($insert);
         return back()->with('success', 'Multiple File has been uploaded into db and storage directory');
     }
 
     public function deleteBscs(Request $request)
-	{
-		$id = $request->id;
-		foreach ($id as $imp) 
-		{
+    {
+        $id = $request->id;
+        foreach ($id as $imp) {
             $bscs = Bscs::where('id', $imp)->first();
-            $path = 'storage/bscs/'.$bscs->name;
-        if(File::exists($path)){
-            File::delete($path); 
-           // return back()->with('success', 'document supprimé');
-        }else{
-           // return back()->with('fail','File does not exists.');
+            $path = 'storage/bscs/' . $bscs->name;
+            if (File::exists($path)) {
+                File::delete($path);
+                // return back()->with('success', 'document supprimé');
+            } else {
+                // return back()->with('fail','File does not exists.');
+            }
+            Bscs::where('id', $imp)->delete();
         }
-        Bscs::where('id', $imp)->delete();
-		}
-		return back()->with('success', 'Files deleted');
-	}
+        return back()->with('success', 'Files deleted');
+    }
 
     /**
      * Display the specified resource.
