@@ -48,8 +48,8 @@ class BscsController extends Controller
                     return back()->with('fail', 'Le fichier '.$name .' existe déja dans la base des données');
                 }else{
                     $insert[$key]['name'] = $name;
-                    $path = $file->storeAs('public/bscs', $name);
-                    //$path = "public/files/". $name;
+                    //$path = $file->storeAs('public/bscs', $name);
+                    $path = "storage/bscs/". $name;
                     $insert[$key]['path'] = "storage/bscs/". $name;
                 }
                 
