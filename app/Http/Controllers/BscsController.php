@@ -41,10 +41,10 @@ class BscsController extends Controller
         if ($request->hasfile('files')) {
             foreach ($request->file('files') as $key => $file) {
                 $name = $file->getClientOriginalName();
-                //$insert[$key]['name'] = $name;
-                $path = $file->storeAs('public/bscs', $name);
-                //$path = "storage/bscs/" . $name;
-                //$insert[$key]['path'] = "storage/bscs/" . $name;
+                $insert[$key]['name'] = $name;
+                //$path = $file->storeAs('public/bscs', $name);
+                $path = "storage/bscs/" . $name;
+                $insert[$key]['path'] = "storage/bscs/" . $name;
                 /* if(Bscs::where('name', $name)->exists())
                 {
                     return back()->with('fail', 'Le fichier '.$name .' existe déja dans la base des données');
@@ -56,7 +56,7 @@ class BscsController extends Controller
                 } */
             }
         }
-        //Bscs::insert($insert);
+        Bscs::insert($insert);
         return back()->with('success', 'Multiple File has been uploaded into db and storage directory');
     }
 

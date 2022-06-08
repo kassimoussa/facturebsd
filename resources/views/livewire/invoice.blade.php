@@ -45,7 +45,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="10">Aucune fiche trouvée pour cette recherche.</td>
+                        <td colspan="10">Aucune facture trouvée pour cette recherche.</td>
                     </tr>
                 @endif
             </tbody>
