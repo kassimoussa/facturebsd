@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BscsController;
 use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -37,6 +38,11 @@ Route::group(['middleware' => ['logged']], function () {
 
     Route::post('invoicestore', [InvoiceController::class, 'store']);
     Route::post('deleteInvoices', [InvoiceController::class, 'deleteInvoices']);
+
+    Route::get('bscs',  [BscsController::class, 'index']);  
+    Route::get('upload_bscs', [BscsController::class, 'create']);
+    Route::post('bscsstore', [BscsController::class, 'store']);
+    Route::post('deleteBscs', [BscsController::class, 'deleteBscs']);
 
     
 
