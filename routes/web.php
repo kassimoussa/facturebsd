@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\GaiaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +45,11 @@ Route::group(['middleware' => ['logged']], function () {
     Route::get('upload_bscs', [BscsController::class, 'create']);
     Route::post('bscsstore', [BscsController::class, 'store']);
     Route::post('deleteBscs', [BscsController::class, 'deleteBscs']);
+
+    Route::get('gaia',  [GaiaController::class, 'index']);  
+    Route::get('upload_gaia', [GaiaController::class, 'create']);
+    Route::post('gaiastore', [GaiaController::class, 'store']);
+    Route::post('deleteGaia', [GaiaController::class, 'deleteGaia']);
 
     
 

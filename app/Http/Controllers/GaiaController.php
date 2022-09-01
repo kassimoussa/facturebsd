@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bscs;
+use App\Models\Gaia;
 use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\File;
 
-class BscsController extends Controller
+class GaiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class BscsController extends Controller
      */
     public function index()
     {
-        return view('1.bscs');
+        return view('1.gaia');
     }
 
     /**
@@ -26,7 +26,7 @@ class BscsController extends Controller
      */
     public function create()
     {
-        return view('1.bscs_upload');
+        return view('1.gaia_upload');
     }
 
     /**
@@ -42,9 +42,9 @@ class BscsController extends Controller
             foreach ($request->file('files') as $key => $file) {
                 $name = $file->getClientOriginalName();
                 $insert[$key]['name'] = $name;
-                $path = $file->storeAs('public/bscs', $name);
-                //$path = "storage/bscs/" . $name;
-                $insert[$key]['path'] = "storage/bscs/" . $name;
+                $path = $file->storeAs('public/gaia', $name);
+                //$path = "storage/gaia/" . $name;
+                $insert[$key]['path'] = "storage/gaia/" . $name;
                 /* if(Bscs::where('name', $name)->exists())
                 {
                     return back()->with('fail', 'Le fichier '.$name .' existe déja dans la base des données');
@@ -56,27 +56,26 @@ class BscsController extends Controller
                 } */
             }
         }
-        Bscs::insert($insert);
+        Gaia::insert($insert);
         return back()->with('success', 'Multiple File has been uploaded into db and storage directory');
     }
 
-    public function deleteBscs(Request $request)
+    public function deleteGaia(Request $request)
     {
         $id = $request->id;
         foreach ($id as $imp) {
-            $bscs = Bscs::where('id', $imp)->first();
-            $path = 'storage/bscs/' . $bscs->name;
+            $gaia = Gaia::where('id', $imp)->first();
+            $path = 'storage/gaia/' . $gaia->name;
             if (File::exists($path)) {
                 File::delete($path);
                 // return back()->with('success', 'document supprimé');
             } else {
                 // return back()->with('fail','File does not exists.');
             }
-            Bscs::where('id', $imp)->delete();
+            Gaia::where('id', $imp)->delete();
         }
         return back()->with('success', 'Files deleted');
     }
-
     /**
      * Display the specified resource.
      *
