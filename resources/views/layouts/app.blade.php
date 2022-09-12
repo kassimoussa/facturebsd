@@ -88,10 +88,10 @@ $user = User::where('id', session('id'))->first();
                     <li class="nav-item ">
                         <a class="nav-link nav_link  @if ($pageSlug == 'bscs') {{ 'active' }} @endif  " aria-current="page" href="bscs">BSCS</a>
                     </li> 
-                    <li class="nav-item ">
+                    {{-- <li class="nav-item ">
                         <a class="nav-link nav_link  @if ($pageSlug == 'gaia') {{ 'active' }} @endif  " aria-current="page" href="gaia">GAIA</a>
                     </li> 
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link nav_link  " href="#">Dashboard</a>
                     </li> --}}
 
