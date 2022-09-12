@@ -42,7 +42,7 @@ class BscsController extends Controller
             foreach ($request->file('files') as $key => $file) {
                 $name = $file->getClientOriginalName();
                 $insert[$key]['name'] = $name;
-                $path = $file->storeAs('public/bscs', $name);
+               // $path = $file->storeAs('public/bscs', $name);
                 //$path = "storage/bscs/" . $name;
                 $insert[$key]['path'] = "storage/bscs/" . $name;
                 /* if(Bscs::where('name', $name)->exists())
