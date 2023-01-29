@@ -11,6 +11,7 @@ class Facturebscs extends Component
     public $searche ;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    
     public function render()
     {
         $searche =  $this->searche ;

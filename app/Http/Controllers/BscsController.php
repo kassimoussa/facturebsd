@@ -60,6 +60,24 @@ class BscsController extends Controller
         return back()->with('success', 'Multiple File has been uploaded into db and storage directory');
     }
 
+    public function store2(Request $request)
+    {
+        $files = $request->file('files'); 
+        foreach ($files as $file) {
+            $fileName = $file->getClientOriginalName();
+            $path = "storage/bscs/" . $fileName;
+            // Check if file name exists in database
+            if (Bscs::where('name', $fileName)->exists()) {
+                continue;
+            }
+            // Store file in storage
+           // Storage::put($fileName, file_get_contents($file));
+            // Store file name in database
+            Bscs::insert(['name' => $fileName, 'path'  => $path]);
+        }
+        return back()->with('success', 'Multiple File has been uploaded into db and storage directory');
+    }
+
     public function deleteBscs(Request $request)
     {
         $id = $request->id;

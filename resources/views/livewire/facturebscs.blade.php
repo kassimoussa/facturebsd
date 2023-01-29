@@ -48,7 +48,7 @@
                         <td colspan="10">Aucune facture trouvée pour cette recherche.</td>
                     </tr>
                 @endif
-            </tbody>
+            </tbody> 
         </table>
         </form>
         <div class="d-flex justify-content-center">

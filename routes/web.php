@@ -43,7 +43,7 @@ Route::group(['middleware' => ['logged']], function () {
 
     Route::get('bscs',  [BscsController::class, 'index']);  
     Route::get('upload_bscs', [BscsController::class, 'create']);
-    Route::post('bscsstore', [BscsController::class, 'store']);
+    Route::post('bscsstore', [BscsController::class, 'store2']);
     Route::post('deleteBscs', [BscsController::class, 'deleteBscs']);
 
     Route::get('gaia',  [GaiaController::class, 'index']);  
