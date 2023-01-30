@@ -29,7 +29,7 @@
                 </div>
             @endif
 
-            <form action="bscsstore" role="form" method="post" class="form" enctype="multipart/form-data">
+            {{-- <form action="bscsstore" role="form" method="post" class="form" enctype="multipart/form-data">
                 @csrf
 
                 <div class="p-3">
@@ -56,7 +56,8 @@
                     </div>
                 </div>
 
-            </form>
+            </form> --}}
+            <livewire:upload-bscs />
         </div>
 
     </div>
