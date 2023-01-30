@@ -18,13 +18,13 @@ class UserController extends Controller
         $request->validate([
             "email" => 'required|email',
             "password" => 'required|min:8|max:16',
-
-
         ]);
 
-        $user = User::where('email', '=', $request->email)->first();
+        $field = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        $user = User::where($field, $request->email)->first();
         if ($user) {
-            if ($request->password = $user->password) {
+            if ($request->password == $user->password) {
                 $request->session()->put('id', $user->id);
                 $request->session()->put('level', $user->id);
                 $request->session()->put('name', $user->name); 

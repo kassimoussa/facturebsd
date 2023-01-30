@@ -11,6 +11,7 @@ class UploadBscs extends Component
     use WithFileUploads;
 
     public $files = [];
+    public $fileNames = [];
 
 
     public function save()
@@ -20,15 +21,15 @@ class UploadBscs extends Component
             if (Bscs::where('name', $name)->exists()) {
                 continue;
             }
-            /* $bscs = new Bscs();
+            $bscs = new Bscs();
             $bscs->name = $name;
             $bscs->path = "storage/bscs/" . $name;
-            $bscs->save(); */
+            $bscs->save();
 
-            $insert[$key]['name'] = $name;
-            $insert[$key]['path'] = "storage/bscs/" . $name;
+            /* $insert[$key]['name'] = $name;
+            $insert[$key]['path'] = "storage/bscs/" . $name; */
         }
-        $query =  Bscs::insert($insert);
+        /* $query =  Bscs::insert($insert);
         if ($query) {
             $this->dispatchBrowserEvent(
                 'alert',
@@ -39,6 +40,13 @@ class UploadBscs extends Component
                 'alert',
                 ['type' => 'error',  'message' => "Erreur lors de l'ajout!"]
             );
+        } */
+    }
+
+    public function storeFileNames($fileNames)
+    {
+        foreach ($fileNames as $fileName) {
+            Bscs::insert(['name' => $fileName, 'path' => "storage/bscs/".$fileName]);
         }
     }
 

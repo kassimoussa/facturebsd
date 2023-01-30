@@ -24,4 +24,23 @@
         <div wire:loading wire:target="files">Uploading...</div>
 
     </form>
+
+    {{-- <input type="file" wire:change="storeFileNames" multiple>
+
+    <script>
+        function storeFileNames() {
+            let fileInput = document.querySelector('input[type="file"]');
+            let files = fileInput.files;
+            let fileNames = [];
+    
+            for (let i = 0; i < files.length; i++) {
+                fileNames.push(files[i].name);
+            }
+    
+            window.livewire.emit('storeFileNames', fileNames);
+        }
+    </script> --}}
+
 </div>
+
+
