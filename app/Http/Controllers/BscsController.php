@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\BscsImport;
 use App\Models\Bscs;
 use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BscsController extends Controller
 {
@@ -77,6 +79,14 @@ class BscsController extends Controller
         }
         return back()->with('success', 'Multiple File has been uploaded into db and storage directory');
     }
+
+    public function import(Request $request)
+    { 
+        Excel::import(new BscsImport, $request->file);
+
+        return back()->with('success', 'Les données ont bien été importer .');
+    }
+
 
     public function deleteBscs(Request $request)
     {

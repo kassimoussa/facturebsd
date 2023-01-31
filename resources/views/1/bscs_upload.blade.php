@@ -37,7 +37,8 @@
                         <h4 class="card-header bg-dark text-center">Facture</h4>
                         <div class="card-body">
                             <div class="mb-3">
-                                <input class="form-control" type="file" name="files[]" id="formFile" multiple>
+                                {{-- <input class="form-control" type="file" name="files[]" id="formFile" multiple> --}}
+                                <input class="form-control" type="file" name="file" id="formFile" >
                                 @error('files')
                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                 @enderror
