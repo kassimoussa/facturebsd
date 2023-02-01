@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BscsExport;
 use App\Imports\BscsImport;
 use App\Models\Bscs;
 use Illuminate\Http\Request;
@@ -103,6 +104,12 @@ class BscsController extends Controller
             Bscs::where('id', $imp)->delete();
         }
         return back()->with('success', 'Files deleted');
+    }
+
+    public function bscs_export()
+    {
+        return Excel::download(new BscsExport, 'bscsExport.xlsx');
+
     }
 
     /**

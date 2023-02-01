@@ -18,7 +18,9 @@ class BscsImport implements ToModel, WithHeadingRow
         $name = $row['name'];
         $path = $row['path'];
         if (Bscs::where('name', $name)->exists()) {
-        
+            Bscs::where('name', $name)
+            ->update([ 
+                "path" => $path]);
         } else {
             /* $bscs = new Bscs();
             $bscs->name = $name;

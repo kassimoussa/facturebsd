@@ -51,6 +51,8 @@ Route::group(['middleware' => ['logged']], function () {
     Route::post('gaiastore', [GaiaController::class, 'store']);
     Route::post('deleteGaia', [GaiaController::class, 'deleteGaia']);
 
+    Route::get('bscs_export', [BscsController::class, 'bscs_export']);
+
     
 
 });
