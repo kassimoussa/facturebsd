@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
-class BscsImport2 implements ToCollection, WithHeadingRow
+class BscsImport2 implements ToCollection
 {
     /**
     * @param array $row
@@ -19,7 +19,7 @@ class BscsImport2 implements ToCollection, WithHeadingRow
     {
         foreach ($rows as $row) 
         {
-            Bscs::where('name', $row[0])->delete();
+            Bscs::where('name', @$row[0])->delete();
         }
     }
 }
