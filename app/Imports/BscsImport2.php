@@ -5,19 +5,21 @@ namespace App\Imports;
 use App\Models\Bscs;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
 
-class BscsImport2 implements ToModel, WithHeadingRow
+class BscsImport2 implements ToCollection, WithHeadingRow
 {
     /**
     * @param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function model(array $row)
+    public function collection(Collection $rows)
     {
-        $name = $row['name'];
-       // $path = "storage/bscs/" . $name;
-
-        return Bscs::where('name', $name)->delete();
+        foreach ($rows as $row) 
+        {
+            Bscs::where('name', $row[0])->delete();
+        }
     }
 }
