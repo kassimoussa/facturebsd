@@ -84,7 +84,7 @@ class BscsController extends Controller
 
     public function import(Request $request)
     { 
-        Excel::import(new BscsImport2, $request->file);
+        Excel::import(new BscsImport, $request->file);
 
         return back()->with('success', 'Les données ont bien été importer .');
     }
