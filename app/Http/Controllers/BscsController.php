@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\BscsExport;
 use App\Imports\BscsImport;
+use App\Imports\BscsImport2;
 use App\Models\Bscs;
 use Illuminate\Http\Request;
 use PDF;
@@ -83,7 +84,7 @@ class BscsController extends Controller
 
     public function import(Request $request)
     { 
-        Excel::import(new BscsImport, $request->file);
+        Excel::import(new BscsImport2, $request->file);
 
         return back()->with('success', 'Les données ont bien été importer .');
     }
