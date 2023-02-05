@@ -23,7 +23,9 @@ Route::get('/', function () {
     return view('connexion');
 });
 
- 
+Route::get('phpinfo', function () {
+    return view('phpinfo');
+});
 
 
 Route::post('check', [UserController::class, 'check'])->name('check');
